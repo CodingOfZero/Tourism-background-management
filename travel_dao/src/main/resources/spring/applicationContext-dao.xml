@@ -32,6 +32,20 @@
         <property name="dataSource" ref="dataSource"/>
         <!--扫描pojo包，给包下所有pojo对象起别名-->
         <!--<property name="typeAliasesPackage" value="com.domain"/>-->
+        <!--传入PageHelper插件-->
+        <property name="plugins">
+            <array>
+                <!--传入插件的对象-->
+                <bean class="com.github.pagehelper.PageInterceptor">
+                    <property name="properties">
+                        <props>
+                            <prop key="helperDialect">mysql</prop><!--所使用的数据库-->
+                            <prop key="reasonable">true</prop><!--合理使用分页，防止点击上下页时超出-->
+                        </props>
+                    </property>
+                </bean>
+            </array>
+        </property>
     </bean>
     <!--3. 配置接口所在的包-->
     <bean id="mapperScanner" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
