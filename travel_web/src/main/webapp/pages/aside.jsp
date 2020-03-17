@@ -33,7 +33,7 @@
 				<ul class="treeview-menu">
 					<security:authorize access="hasRole('ROLE_ADMIN')">
 					<li id="system-setting"><a
-						href="${pageContext.request.contextPath}/user/findAll.do?page=1&pageSize=10"> <i
+						href="${pageContext.request.contextPath}/user/findAll?page=1&size=5"> <i
 							class="fa fa-circle-o"></i> 用户管理
 					</a></li>
 					</security:authorize>
