@@ -31,4 +31,24 @@ public class UserController {
         mv.setViewName("user-list");
         return mv;
     }
+    /*
+    新建用户
+     */
+    @RequestMapping("/save")
+    public String saveUser(UserInfo userInfo) throws Exception{
+        userService.saveUserInfo(userInfo);
+        return "redirect: findAll";
+    }
+    /*
+    用户详细信息
+     */
+    @RequestMapping("/findById")
+    public ModelAndView findUserInfoById(Integer id) throws Exception{
+        ModelAndView mv=new ModelAndView();
+        UserInfo userinfo = userService.findUserInfoById(id);
+
+        mv.addObject("user",userinfo);
+        mv.setViewName("user-show");
+        return mv;
+    }
 }

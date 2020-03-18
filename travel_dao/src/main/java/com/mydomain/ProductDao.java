@@ -18,7 +18,7 @@ public interface ProductDao {
     public Product findById(Integer id) throws Exception;
     //查询所有产品信息
     @Select("select * from product")
-    public List<Product> findAll() throws Exception;
+    public List<Product> findAll(int page,int size) throws Exception;
     /**
      * 保存一个 商品的信息
      * @param product 需要保存的商品的对象

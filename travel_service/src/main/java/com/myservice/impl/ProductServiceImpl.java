@@ -1,6 +1,7 @@
 package com.myservice.impl;
 
 
+import com.github.pagehelper.PageHelper;
 import com.mydomain.Product;
 import com.mydomain.ProductDao;
 import com.myservice.ProductService;
@@ -14,8 +15,9 @@ public class ProductServiceImpl implements ProductService {
     @Autowired
     private ProductDao productDao;
 
-    public List<Product> findAll() throws Exception {
-        return  productDao.findAll();
+    public List<Product> findAll(int page,int size) throws Exception {
+        PageHelper.startPage(page,size);
+        return  productDao.findAll(page,size);
     }
 
     public void saveProduct(Product product) throws Exception {

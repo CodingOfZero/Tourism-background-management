@@ -112,7 +112,7 @@
 											<i class="fa fa-file-o" ></i> 新建
 										</button>
 										
-										<button type="button" class="btn btn-default" title="刷新" onclick="location.href='${pageContext.request.contextPath}/user/findAll.do?page=1&pageSize=${pageInfo.pageSize}'">
+										<button type="button" class="btn btn-default" title="刷新" onclick="location.href='${pageContext.request.contextPath}/user/findAll?page=1&size=${pageInfo.pageSize}'">
 											<i class="fa fa-refresh"></i> 刷新
 										</button>
 									</div>
