@@ -33,4 +33,10 @@ public class ProductController {
         productService.saveProduct(product);
         return "redirect:findAll";
     }
+    //根据id删除产品
+    @RequestMapping("/deleteById")
+    public String deleteById(int id) throws Exception {
+        productService.deleteById(id);
+        return "redirect:findAll";
+    }
 }

@@ -10,4 +10,7 @@ public interface ProductService {
 
     //新建产品信息
     public void saveProduct(Product product) throws Exception;
+
+    //根据id删除产品
+    public void deleteById(int id)throws Exception;
 }

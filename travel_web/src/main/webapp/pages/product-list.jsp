@@ -54,6 +54,7 @@
   <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
+	<!--删除-->
 
 
 <!-- 页面meta /-->
@@ -102,6 +103,14 @@
 	href="${pageContext.request.contextPath}/plugins/bootstrap-slider/slider.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/plugins/bootstrap-datetimepicker/bootstrap-datetimepicker.css">
+
+	<script>
+		function deleteProduct(id){
+			if(confirm("您确定删除吗？")){
+				location.href="${pageContext.request.contextPath}/product/deleteById?id="+id;
+			}
+		}
+	</script>
 </head>
 
 <body class="hold-transition skin-purple sidebar-mini">
@@ -159,6 +168,8 @@
 										<button type="button" class="btn btn-default" title="删除">
 											<i class="fa fa-trash-o"></i> 删除
 										</button>
+									<!--	<a class="btn btn-primary" href="javascript:void(0);" id="delSelected">删除选中</a>-->
+
 										<button type="button" class="btn btn-default" title="开启">
 											<i class="fa fa-check"></i> 开启
 										</button>
@@ -205,7 +216,7 @@
 									<c:forEach items="${pageInfo.list}" var="product">
 
 										<tr>
-											<td><input name="ids" type="checkbox"></td>
+											<td><input name="ids" type="checkbox" value="${product.id}"></td>
 											<td>${product.id }</td>
 											<td>${product.productNum }</td>
 											<td>${product.productName }</td>
@@ -215,9 +226,14 @@
 											<td>${product.productDesc }</td>
 											<td class="text-center">${product.productStatusStr }</td>
 											<td class="text-center">
-												<button type="button" class="btn bg-olive btn-xs">订单</button>
+												<!--<button type="button" class="btn bg-olive btn-xs">订单</button>
 												<button type="button" class="btn bg-olive btn-xs">详情</button>
-												<button type="button" class="btn bg-olive btn-xs">编辑</button>
+												<button type="button" class="btn bg-olive btn-xs">编辑</button>-->
+												<a class="btn bg-olive btn-xs" >订单</a>
+												<a class="btn bg-olive btn-xs">详情</a>
+												<a class="btn bg-olive btn-xs">编辑</a>
+												<a class="btn bg-olive btn-xs" href="javascript:deleteProduct(${product.id})">删除</a>
+
 											</td>
 										</tr>
 									</c:forEach>
@@ -234,6 +250,7 @@
                             </tfoot>-->
 							</table>
 							<!--数据列表/-->
+
 						</div>
 						<!-- 数据表格 /-->
 

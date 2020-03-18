@@ -1,5 +1,6 @@
 package com.mydomain;
 
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
@@ -25,4 +26,8 @@ public interface ProductDao {
      */
     @Insert("insert into product (productNum,productName,cityName,departureTime,productPrice,productDesc,productStatus) values (#{productNum},#{productName},#{cityName},#{departureTime},#{productPrice},#{productDesc},#{productStatus})")
     public void saveProduct(Product product) throws Exception;
+
+    //根据id删除产品
+    @Delete("delete  from product where id=#{id}")
+    public void deleteById(int id)throws Exception;
 }

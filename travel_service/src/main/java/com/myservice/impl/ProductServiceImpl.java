@@ -23,4 +23,8 @@ public class ProductServiceImpl implements ProductService {
     public void saveProduct(Product product) throws Exception {
         productDao.saveProduct(product);
     }
+
+    public void deleteById(int id) throws Exception {
+        productDao.deleteById(id);
+    }
 }
