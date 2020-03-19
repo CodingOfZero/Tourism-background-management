@@ -1,10 +1,6 @@
 package com.mydomain;
 
-import org.apache.ibatis.annotations.Many;
-import org.apache.ibatis.annotations.Result;
-import org.apache.ibatis.annotations.Results;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.mapping.FetchType;
+import org.apache.ibatis.annotations.*;
 
 
 import java.util.List;
@@ -18,4 +14,10 @@ public interface RoleDao {
             @Result(property = "permissions",column = "id",many = @Many(select = "com.mydomain.PermissionDao.findPermissionByRoleId"))
     })
     public List<Role> findRoleByUserId(int id) throws Exception;
+
+    @Select("select * from role")
+    public List<Role> findAll(int page,int size) throws Exception;
+
+    @Insert("insert into role (roleName,roleDesc) values(#{roleName},#{roleDesc})")
+    public void saveRole(Role role)throws Exception;
 }

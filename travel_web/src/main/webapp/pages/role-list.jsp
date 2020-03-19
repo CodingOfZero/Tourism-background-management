@@ -79,15 +79,15 @@
 			<!-- 内容头部 -->
 			<section class="content-header">
 			<h1>
-				用户管理 <small>全部用户</small>
+				角色管理 <small>全部角色</small>
 			</h1>
 			<ol class="breadcrumb">
 				<li><a href="${pageContext.request.contextPath}/index.jsp"><i
 						class="fa fa-dashboard"></i> 首页</a></li>
 				<li><a
-					href="${pageContext.request.contextPath}/user/findAll">用户管理</a></li>
+					href="${pageContext.request.contextPath}/role/findAll?page=1&size=5">角色管理</a></li>
 
-				<li class="active">全部用户</li>
+				<li class="active">全部角色</li>
 			</ol>
 			</section>
 			<!-- 内容头部 /-->
@@ -108,11 +108,11 @@
 							<div class="pull-left">
 								<div class="form-group form-inline">
 									<div class="btn-group">
-										<button type="button" class="btn btn-default" title="新建" onclick="location.href='${pageContext.request.contextPath}/pages/user-add.jsp'">
-											<i class="fa fa-file-o" ></i> 新建
+										<button type="button" class="btn btn-default" title="新建" onclick="location.href='${pageContext.request.contextPath}/pages/role-add.jsp'">
+											<i class="fa fa-file-o"></i> 新建
 										</button>
 										
-										<button type="button" class="btn btn-default" title="刷新" onclick="location.href='${pageContext.request.contextPath}/user/findAll?page=1&size=${pageInfo.pageSize}'">
+										<button type="button" class="btn btn-default" title="刷新" onclick="location.href='${pageContext.request.contextPath}/role/findAll.do'">
 											<i class="fa fa-refresh"></i> 刷新
 										</button>
 									</div>
@@ -120,9 +120,6 @@
 							</div>
 							<div class="box-tools pull-right">
 								<div class="has-feedback">
-									<input type="text" class="form-control input-sm"
-										placeholder="搜索"> <span
-										class="glyphicon glyphicon-search form-control-feedback"></span>
 								</div>
 							</div>
 							<!--工具栏/-->
@@ -136,27 +133,21 @@
 											id="selall" type="checkbox" class="icheckbox_square-blue">
 										</th>
 										<th class="sorting_asc">序号</th>
-										<th class="sorting_desc">用户名</th>
-										<th class="sorting_asc sorting_asc_disabled">邮箱</th>
-										<th class="sorting_desc sorting_desc_disabled">联系电话</th>
-										<th class="sorting">状态</th>
+										<th class="sorting_desc">角色名称</th>
+										<th class="sorting_asc sorting_asc_disabled">描述</th>										
 										<th class="text-center">操作</th>
 									</tr>
 								</thead>
 								<tbody>
 
-									<c:forEach items="${pageInfo.list}" var="user" varStatus="index">
+									<c:forEach items="${pageInfo.list}" var="role" varStatus="index">
 										<tr>
 											<td><input name="ids" type="checkbox"></td>
 											<td>${index.index+1}</td>
-											<td>${user.userName }</td>
-											<td>${user.email }</td>
-											<td>${user.phoneNum }</td>
-											<td>${user.statusStr }</td>
+											<td>${role.roleName }</td>
+											<td>${role.roleDesc }</td>																				
 											<td class="text-center">
-												<a href="${pageContext.request.contextPath}/user/findById?id=${user.id}" class="btn bg-olive btn-xs">详情</a>
-												<a href="${pageContext.request.contextPath}/user/findUserByIdAndAllRole.do?id=${user.id}" class="btn bg-olive btn-xs">添加角色</a>
-												<a href="${pageContext.request.contextPath}/user/edit.do?id=${user.id}" class="btn bg-olive btn-xs">编辑</a>
+												<a href="${pageContext.request.contextPath}/role/findUserByIdAndAllPermission.do?id=${role.id}" class="btn bg-olive btn-xs">添加权限</a>
 											</td>
 										</tr>
 									</c:forEach>
@@ -195,41 +186,42 @@
 						<div class="box-tools pull-right">
 							<ul class="pagination">
 								<li>
-									<a href="${pageContext.request.contextPath}/user/findAll?page=1&size=${pageInfo.pageSize}" aria-label="Previous">首页</a>
+									<a href="${pageContext.request.contextPath}/role/findAll?page=1&size=${pageInfo.pageSize}" aria-label="Previous">首页</a>
 								</li>
 								<!--上一页-->
 								<li>
-									<a class="page-link" href="${pageContext.request.contextPath}/user/findAll?page=${pageInfo.pageNum-1}&size=${pageInfo.pageSize}" aria-label="Previous">
+									<a class="page-link" href="${pageContext.request.contextPath}/role/findAll?page=${pageInfo.pageNum-1}&size=${pageInfo.pageSize}" aria-label="Previous">
 										<span aria-hidden="true">&laquo;</span>
+
 									</a>
 								</li>
 
 								<c:forEach begin="1" end="${pageInfo.pages}" var="i">
 									<!--判断当前页面是否和i相同，实现选中该页面的视觉效果-->
 									<c:if test="${pageInfo.pageNum == i}">
-										<li class="active"><a class="page-link" href="${pageContext.request.contextPath}/user/findAll?page=${i}&size=${pageInfo.pageSize}" >${i}</a></li>
+										<li class="active"><a class="page-link" href="${pageContext.request.contextPath}/role/findAll?page=${i}&size=${pageInfo.pageSize}" >${i}</a></li>
 									</c:if>
 									<c:if test="${pageInfo.pageNum != i}">
-										<li ><a class="page-link" href="${pageContext.request.contextPath}/user/findAll?page=${i}&size=${pageInfo.pageSize}">${i}</a></li>
+										<li ><a class="page-link" href="${pageContext.request.contextPath}/role/findAll?page=${i}&size=${pageInfo.pageSize}">${i}</a></li>
 									</c:if>
 								</c:forEach>
 
 								<!--下一页-->
 								<li>
-									<a class="page-link" href="${pageContext.request.contextPath}/user/findAll?page=${pageInfo.pageNum+1}&size=${pageInfo.pageSize}" aria-label="Next">
+									<a class="page-link" href="${pageContext.request.contextPath}/role/findAll?page=${pageInfo.pageNum+1}&size=${pageInfo.pageSize}" aria-label="Next">
 										<span aria-hidden="true">&raquo;</span>
 									</a>
 								</li>
 
 								<li>
-									<a href="${pageContext.request.contextPath}/user/findAll?page=${pageInfo.pages}&size=${pageInfo.pageSize}" aria-label="Next">尾页</a>
+									<a href="${pageContext.request.contextPath}/role/findAll?page=${pageInfo.pages}&size=${pageInfo.pageSize}" aria-label="Next">尾页</a>
 								</li>
 							</ul>
 						</div>
 
-
 					</div>
 					<!-- /.box-footer-->
+
 
 				</div>
 
@@ -306,7 +298,7 @@
 				var pageSize = $("#changePageSize").val();
 
 				//向服务器发送请求，改变没页显示条数
-				location.href = "${pageContext.request.contextPath}/user/findAll?page=1&size="
+				location.href = "${pageContext.request.contextPath}/role/findAll?page=1&size="
 						+ pageSize;
 			}
 			$(document).ready(function() {
