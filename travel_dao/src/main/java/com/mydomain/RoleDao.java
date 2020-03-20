@@ -20,4 +20,13 @@ public interface RoleDao {
 
     @Insert("insert into role (roleName,roleDesc) values(#{roleName},#{roleDesc})")
     public void saveRole(Role role)throws Exception;
+
+    @Select("select * from role where id=#{roleId}")
+    Role findById(int roleId) throws Exception;
+
+    @Select("select * from permission where id not in (select permissionId from role_permission where roleId=#{roleId})")
+    List<Permission> findOtherPermission(int roleId) throws Exception;
+
+    @Insert("insert into role_permission(permissionId,roleId) values(#{permissionId},#{roleId})")
+    void addPermissionToRole(@Param("roleId") int roleId, @Param("permissionId") int perId) throws Exception;
 }

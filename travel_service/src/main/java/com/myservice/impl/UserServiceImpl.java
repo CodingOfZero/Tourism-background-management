@@ -65,4 +65,15 @@ public class UserServiceImpl implements UserService {
     public UserInfo findUserInfoById(int id) throws Exception {
         return userDao.findUserInfoById(id);
     }
+
+    public List<Role> findOtherRoles(int userId) throws Exception {
+        return userDao.findOtherRoles(userId);
+    }
+
+    public void addRoleToUser(int userId, int[] ids) throws Exception {
+        for(int roleId:ids){
+            userDao.addRoleToUser(userId,roleId);
+        }
+
+    }
 }

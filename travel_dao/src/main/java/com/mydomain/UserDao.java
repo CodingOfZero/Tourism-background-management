@@ -44,4 +44,11 @@ public interface UserDao {
             @Result(property = "status",column = "status"),
             @Result(property = "roles",column = "id",many = @Many(select = "com.mydomain.RoleDao.findRoleByUserId" ))    })
     public UserInfo findUserInfoById(int id) throws Exception;
+
+    //根据用户id查询可以添加的角色,查出未关联的角色
+    @Select("select * from role where id not in (select roleId from users_role where userId = #{userId})")
+    public List<Role> findOtherRoles(int userId) throws Exception;
+
+    @Insert("insert into users_role(userId,roleId) values(#{userId},#{roleId})")
+    void addRoleToUser(@Param("userId") int userId,@Param("roleId") int roleId);
 }

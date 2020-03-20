@@ -1,5 +1,6 @@
 package com.myservice;
 
+import com.mydomain.Role;
 import com.mydomain.UserInfo;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
@@ -12,4 +13,8 @@ public interface UserService extends UserDetailsService {
     public void saveUserInfo(UserInfo userInfo) throws Exception;
     //根据用户id查询用户详细信息，包含角色，权限信息
     public UserInfo findUserInfoById(int id) throws Exception;
+    //根据用户id查询可以添加的角色
+    public List<Role> findOtherRoles(int userId) throws Exception;
+    public void addRoleToUser(int userId, int[] ids) throws Exception;
+
 }

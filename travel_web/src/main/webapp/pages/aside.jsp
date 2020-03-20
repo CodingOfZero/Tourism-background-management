@@ -38,15 +38,15 @@
 					</a></li>
 					</security:authorize>
 					<li id="system-setting"><a
-						href="${pageContext.request.contextPath}/role/findAll.do?page=1&pageSize=5"> <i
+						href="${pageContext.request.contextPath}/role/findAll?page=1&size=5"> <i
 							class="fa fa-circle-o"></i> 角色管理
 					</a></li>
 					<li id="system-setting"><a
-						href="${pageContext.request.contextPath}/permission/findAll.do?page=1&pageSize=5">
+						href="${pageContext.request.contextPath}/permission/findAll?page=1&size=5">
 							<i class="fa fa-circle-o"></i> 资源权限管理
 					</a></li>
 					<li id="system-setting"><a
-						href="${pageContext.request.contextPath}/sysLog/findAll.do?page=1&pageSize=15"> <i
+						href="${pageContext.request.contextPath}/sysLog/findAll?page=1&size=15"> <i
 							class="fa fa-circle-o"></i> 访问日志
 					</a></li>
 				</ul></li>
