@@ -1,7 +1,5 @@
 package com.myservice.impl;
 
-import com.github.pagehelper.PageHelper;
-import com.github.pagehelper.PageInfo;
 import com.mydomain.Permission;
 import com.mydomain.Role;
 import com.mydomain.RoleDao;

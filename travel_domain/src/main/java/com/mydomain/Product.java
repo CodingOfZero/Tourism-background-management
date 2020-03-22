@@ -1,8 +1,6 @@
 package com.mydomain;
 
 import com.myutils.DateUtils;
-import org.springframework.format.annotation.DateTimeFormat;
-
 import java.io.Serializable;
 import java.util.Date;
 
