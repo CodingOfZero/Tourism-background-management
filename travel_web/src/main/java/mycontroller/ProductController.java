@@ -19,7 +19,7 @@ public class ProductController {
     private ProductService productService;
 
    @RequestMapping("/findAll")
-    public ModelAndView findAll(@RequestParam(name="page",required = true,defaultValue = "1") int page, @RequestParam(name = "size",required = true,defaultValue = "5") int size) throws Exception {
+    public ModelAndView findAll(@RequestParam(name="page",required = true,defaultValue = "1") Integer page, @RequestParam(name = "size",required = true,defaultValue = "5") Integer size) throws Exception {
         ModelAndView mv=new ModelAndView();
         List<Product> products = productService.findAll(page,size);
         PageInfo pageInfo=new PageInfo(products);

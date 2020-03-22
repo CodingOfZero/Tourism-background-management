@@ -29,7 +29,7 @@ public class OrdersController {
     }*/
 
     @RequestMapping("/findAll")
-    public ModelAndView findAll(@RequestParam(name="page",required = true,defaultValue = "1") int page,@RequestParam(name = "size",required = true,defaultValue = "5") int size) throws Exception {
+    public ModelAndView findAll(@RequestParam(name="page",required = true,defaultValue = "1") Integer page,@RequestParam(name = "size",required = true,defaultValue = "5") Integer size) throws Exception {
         ModelAndView mv=new ModelAndView();
         List<Orders> ordersList = ordersService.findAll(page,size);
         //就是一个Bean
