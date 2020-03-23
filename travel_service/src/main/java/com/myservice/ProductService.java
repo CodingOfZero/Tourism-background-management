@@ -13,4 +13,10 @@ public interface ProductService {
 
     //根据id删除产品
     public void deleteById(int id)throws Exception;
+
+
+    //根据id查询产品
+    public Product findById(int id)throws Exception;
+    //更新产品信息
+    public void update(Product product) throws Exception;
 }

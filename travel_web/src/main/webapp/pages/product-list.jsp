@@ -231,7 +231,7 @@
 												<button type="button" class="btn bg-olive btn-xs">编辑</button>-->
 												<a class="btn bg-olive btn-xs" >订单</a>
 												<a class="btn bg-olive btn-xs">详情</a>
-												<a class="btn bg-olive btn-xs">编辑</a>
+												<a class="btn bg-olive btn-xs" href="${pageContext.request.contextPath}/product/findById?id=${product.id}">编辑</a>
 												<a class="btn bg-olive btn-xs" href="javascript:deleteProduct(${product.id})">删除</a>
 
 											</td>

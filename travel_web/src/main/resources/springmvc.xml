@@ -33,17 +33,18 @@
     <!--过滤静态资源，另一个老师使用以下语句，来达到目标，一句顶两句？？-->
     <!--<mvc:default-servlet-handler/>-->
 
-    <!--设置全局日期转换器 -->
-    <bean id="con" class="org.springframework.context.support.ConversionServiceFactoryBean">
+    <!--设置全局日期转换器
+    <bean id="con" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
         <property name="converters" >
             <set>
                 <bean class="com.myutils.DateConverte"/>
             </set>
         </property>
-    </bean>
+        conversion-service="con"
+    </bean>-->
 
     <!--开启SpringMVC注解支持-->
-    <mvc:annotation-driven conversion-service="con"/>
+    <mvc:annotation-driven />
 
     <!--
     配置AOP的注解支持 AOP 底层使用代理技术

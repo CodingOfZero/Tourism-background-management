@@ -4,8 +4,10 @@ package mycontroller;
 import com.github.pagehelper.PageInfo;
 import com.mydomain.Product;
 import com.myservice.ProductService;
+import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
@@ -37,6 +39,22 @@ public class ProductController {
     @RequestMapping("/deleteById")
     public String deleteById(Integer id) throws Exception {
         productService.deleteById(id);
+        return "redirect:findAll";
+    }
+    //根据id查询产品
+    @RequestMapping("/findById")
+    public ModelAndView findById(Integer id) throws Exception {
+        ModelAndView mv=new ModelAndView();
+        Product product=productService.findById(id);
+        mv.addObject("product",product);
+        mv.setViewName("product-edit");
+        return mv;
+    }
+
+    //更新产品
+    @RequestMapping("/update")
+    public String update(Product product) throws Exception {
+        productService.update(product);
         return "redirect:findAll";
     }
 }

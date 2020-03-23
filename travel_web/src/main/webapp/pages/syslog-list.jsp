@@ -87,7 +87,7 @@
 				<li><a href="${pageContext.request.contextPath}/index.jsp"><i
 						class="fa fa-dashboard"></i> 首页</a></li>
 				<li><a
-					href="${pageContext.request.contextPath}/sysLog/findAll.do">日志管理</a></li>
+					href="${pageContext.request.contextPath}/sysLog/findAll?page=1&size=5">日志管理</a></li>
 
 				<li class="active">全部日志</li>
 			</ol>
@@ -158,26 +158,6 @@
 
 						</table>
 						<!--数据列表/-->
-
-						<!--工具栏-->
-						<div class="pull-left">
-							<div class="form-group form-inline">
-								<div class="btn-group">
-									<button type="button" class="btn btn-default" title="刷新"
-											onclick="location.href='${pageContext.request.contextPath}/sysLog/findAll.do?page=1&pageSize=${pageInfo.pageSize}'">
-										<i class="fa fa-refresh"></i> 刷新
-									</button>
-								</div>
-							</div>
-						</div>
-						<div class="box-tools pull-right">
-							<div class="has-feedback">
-<%--								<input type="text" class="form-control input-sm"--%>
-<%--									placeholder="搜索"> <span--%>
-<%--									class="glyphicon glyphicon-search form-control-feedback"></span>--%>
-							</div>
-						</div>
-						<!--工具栏/-->
 
 
 					</div>

@@ -29,4 +29,12 @@ public class ProductServiceImpl implements ProductService {
     public void deleteById(int id) throws Exception {
         productDao.deleteById(id);
     }
+
+    public Product findById(int id) throws Exception {
+        return productDao.findById(id);
+    }
+
+    public void update(Product product) throws Exception {
+        productDao.update(product);
+    }
 }

@@ -15,6 +15,17 @@ import java.util.Date;
 public class DateConverte implements Converter<String, Date> {
     @Override
     public Date convert(String s) {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        dateFormat.setLenient(false);
+        try {
+            return dateFormat.parse(s);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+/*    @Override
+    public Date convert(String s) {
         if(s==null){
             throw new RuntimeException("未传入数据");
         }
@@ -26,5 +37,5 @@ public class DateConverte implements Converter<String, Date> {
         }
         return null;
 
-    }
+    }*/
 }
