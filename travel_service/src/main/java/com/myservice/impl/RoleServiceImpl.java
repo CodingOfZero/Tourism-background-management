@@ -1,5 +1,6 @@
 package com.myservice.impl;
 
+import com.github.pagehelper.PageHelper;
 import com.mydomain.Permission;
 import com.mydomain.Role;
 import com.mydomain.RoleDao;
@@ -16,6 +17,7 @@ public class RoleServiceImpl implements RoleService {
     private RoleDao roleDao;
 
     public List<Role> findAll(int page,int size) throws Exception {
+        PageHelper.startPage(page, size);
         return roleDao.findAll(page,size);
     }
 

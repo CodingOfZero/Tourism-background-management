@@ -22,7 +22,7 @@ public class RoleController {
     private RoleService roleService;
 
     @RequestMapping("/findAll")
-    public ModelAndView findAll(@RequestParam(name="page" ,required = true,defaultValue = "1")int page, @RequestParam(name="size",required = true,defaultValue = "5")int size)throws Exception{
+    public ModelAndView findAll(@RequestParam(name="page" ,required = true,defaultValue = "1")Integer page, @RequestParam(name="size",required = true,defaultValue = "5")Integer size)throws Exception{
         ModelAndView mv=new ModelAndView();
         List<Role> roles = roleService.findAll(page,size);
         PageInfo pageInfo=new PageInfo(roles);
@@ -39,7 +39,7 @@ public class RoleController {
 
     //为角色添加权限
     @RequestMapping("/findRoleByIdAndAllPermission")
-    public ModelAndView findRoleByIdAndAllPermission(@RequestParam(name="id" ,required = true)int roleId) throws Exception{
+    public ModelAndView findRoleByIdAndAllPermission(@RequestParam(name="id" ,required = true)Integer roleId) throws Exception{
         ModelAndView mv=new ModelAndView();
         Role role=roleService.findById(roleId);
         List<Permission> perlist=roleService.findOtherPermission(roleId);
@@ -51,7 +51,7 @@ public class RoleController {
 
     @RequestMapping("/addPermissionToRole")
     @Secured("ROLE_ADMIN")
-    public String addPermissionToRole(@RequestParam(name="roleId" ,required = true)int roleId,@RequestParam(name="ids" ,required = true)int[] ids) throws Exception{
+    public String addPermissionToRole(@RequestParam(name="roleId" ,required = true)Integer roleId,@RequestParam(name="ids" ,required = true)int[] ids) throws Exception{
         roleService.addPermissionToRole(roleId,ids);
         return "redirect: findAll";//角色信息
     }

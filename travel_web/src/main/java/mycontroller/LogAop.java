@@ -72,11 +72,14 @@ public class LogAop {
             RequestMapping classAnnotation = (RequestMapping)aClass.getAnnotation(RequestMapping.class);
             if(classAnnotation!=null){
                 String[] classValue=classAnnotation.value();
+
                 //2.获取方法上的@RequestMapping
                 RequestMapping methodAnnotation = (RequestMapping)method.getAnnotation(RequestMapping.class);
                 if(methodAnnotation!=null){
                     String[] methodValue=classAnnotation.value();
                     url=classValue[0]+methodValue[0];
+                    if("/sysLog/findAll".equals(url))
+                        return;
                     //获取IP
                     String ip=request.getRemoteAddr();
                     //获取当前操作的用户

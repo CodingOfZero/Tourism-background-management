@@ -23,7 +23,7 @@ public class UserController {
      * @return
      */
     @RequestMapping("/findAll")
-    public ModelAndView findAll(@RequestParam(name="page" ,required = true,defaultValue = "1")int page,@RequestParam(name="size",required = true,defaultValue = "5")int size) throws Exception{
+    public ModelAndView findAll(@RequestParam(name="page" ,required = true,defaultValue = "1")Integer page,@RequestParam(name="size",required = true,defaultValue = "5")Integer size) throws Exception{
         ModelAndView mv=new ModelAndView();
         List<UserInfo> user = userService.findAll(page,size);
         PageInfo pageInfo=new PageInfo(user);
@@ -57,7 +57,7 @@ public class UserController {
      */
     //查询用户以及用户可以添加的角色
     @RequestMapping("/findUserByIdAndAllRole")
-    public ModelAndView findUserByIdAndAllRole(@RequestParam(name="id" ,required = true)int userId) throws Exception{
+    public ModelAndView findUserByIdAndAllRole(@RequestParam(name="id" ,required = true)Integer userId) throws Exception{
         ModelAndView mv=new ModelAndView();
         //1.根据用户的id查询用户
         UserInfo user = userService.findUserInfoById(userId);
@@ -69,7 +69,7 @@ public class UserController {
         return mv;
     }
     @RequestMapping("/addRoleToUser")
-    public String addRoleToUser(@RequestParam(name="userId" ,required = true)int userId,@RequestParam(name="ids" ,required = true)int[] ids) throws Exception{
+    public String addRoleToUser(@RequestParam(name="userId" ,required = true)Integer userId,@RequestParam(name="ids" ,required = true)int[] ids) throws Exception{
         userService.addRoleToUser(userId,ids);
         return "redirect: findAll";//用户
     }

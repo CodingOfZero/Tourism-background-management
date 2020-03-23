@@ -35,7 +35,7 @@ public class ProductController {
     }
     //根据id删除产品
     @RequestMapping("/deleteById")
-    public String deleteById(int id) throws Exception {
+    public String deleteById(Integer id) throws Exception {
         productService.deleteById(id);
         return "redirect:findAll";
     }
